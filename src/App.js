@@ -3,6 +3,7 @@
 // React components follow the PascalCase naming convention; this will help you quickly identify whether a function is a component of just a regular function
 import React from 'react';
 import About from './components/About';
+import Nav from './components/Nav';
 
 
 // inside the function, HTML is all that is returned; but in reality, it's not HTML but rather a language called JSX that essentially represents HTML in JavaScript
@@ -17,6 +18,7 @@ function App() {
     // ])
     // React components must ALWAYS return a single parent JSX element; however, this element may have many children elements
     <div>
+      <Nav></Nav>
       <main>
         <About></About>
       </main>
