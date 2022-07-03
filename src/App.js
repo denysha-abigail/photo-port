@@ -4,6 +4,7 @@
 import React from 'react';
 import About from './components/About';
 import Nav from './components/Nav';
+import Gallery from './components/Gallery';
 
 
 // inside the function, HTML is all that is returned; but in reality, it's not HTML but rather a language called JSX that essentially represents HTML in JavaScript
@@ -20,6 +21,7 @@ function App() {
     <div>
       <Nav></Nav>
       <main>
+        <Gallery></Gallery>
         <About></About>
       </main>
     </div>
