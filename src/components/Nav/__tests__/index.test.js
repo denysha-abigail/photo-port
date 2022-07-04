@@ -8,6 +8,8 @@ const categories = [
 ]
 const mockCurrentCategory = jest.fn();
 const mockSetCurrentCategory = jest.fn();
+const mockContactSelected = jest.fn();
+const mockSetContactSelected = jest.fn();
 
 afterEach(cleanup);
 
@@ -19,16 +21,20 @@ describe('Nav component', () => {
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
             currentCategory={mockCurrentCategory}
+            contactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
         />);
     });
 
     // snapshot test
     it('matches snapshot', () => {
-        const { asFragment } = render(<Nav 
+        const { asFragment } = render(<Nav
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
             currentCategory={mockCurrentCategory}
-            />);
+            contactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
+        />);
         // assert value comparison
         expect(asFragment()).toMatchSnapshot();
     });
@@ -40,11 +46,13 @@ describe('emoji is visible', () => {
     it('inserts emoji into the h2', () => {
         // arrange
         // query to return the element containing the emoji
-        const { getByLabelText } = render(<Nav 
+        const { getByLabelText } = render(<Nav
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
             currentCategory={mockCurrentCategory}
-            />);
+            contactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
+        />);
         // assert
         // query the element by its aria-label to test the emoji's accessibility
         expect(getByLabelText('camera')).toHaveTextContent('📸');
@@ -56,11 +64,13 @@ describe('links are visible', () => {
     it('inserts text into the links', () => {
         // arrange
         // verify that the text content is being inserted into the <a> tags (i.e. that the links are visible to users); use getByTestId method; similar to an id attribute, we will add a data-testid to the <a> element; also similar to the getElementById DOM method, we will use the getByTestId method to return the DOM element
-        const { getByTestId } = render(<Nav 
+        const { getByTestId } = render(<Nav
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
             currentCategory={mockCurrentCategory}
-            />);
+            contactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
+        />);
         // assert
         // assert the valid outcomes using the matcher toHaveTextContent
         expect(getByTestId('link')).toHaveTextContent('Oh Snap!');
