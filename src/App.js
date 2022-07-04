@@ -2,8 +2,8 @@
 // to effect any change on the application, we need to either modify this file or add components inside of it
 // React components follow the PascalCase naming convention; this will help you quickly identify whether a function is a component of just a regular function
 import React,  { useState } from 'react';
-import About from './components/About';
 import Nav from './components/Nav';
+import About from './components/About';
 import Gallery from './components/Gallery';
 
 
@@ -33,11 +33,11 @@ function App() {
     // ])
     // React components must ALWAYS return a single parent JSX element; however, this element may have many children elements
     <div>
-      <Nav>
+      <Nav
         categories={categories}
         setCurrentCategory={setCurrentCategory}
         currentCategory={currentCategory}
-      </Nav>
+      ></Nav>
       <main>
         <div>
           <Gallery currentCategory={currentCategory}></Gallery>
