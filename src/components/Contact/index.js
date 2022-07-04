@@ -44,7 +44,7 @@ function ContactForm() {
         // the conditional statement only allows the state to update with the user input if there is no error message
         if (!errorMessage) {
             setFormState({ ...formState, [e.target.name]: e.target.value });
-          }
+        }
 
     }
 
@@ -63,20 +63,37 @@ function ContactForm() {
             <form id="contact-form" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name">Name:</label>
-                    <input type="text" defaultValue={name} onChange={handleChange} name="name" />
+                    <input type="text" defaultValue={name} onBlur={handleChange} name="name" />
                 </div>
                 <div>
                     <label htmlFor="email">Email address:</label>
-                    <input type="email" defaultValue={email} name="email" onChange={handleChange} />
+                    <input type="email" defaultValue={email} name="email" onBlur={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="message">Message:</label>
-                    <textarea name="message" defaultValue={message} onChange={handleChange} rows="5" />
+                    <textarea name="message" defaultValue={message} onBlur={handleChange} rows="5" />
                 </div>
+                {errorMessage && (
+                    <div>
+                        <p className="error-text">{errorMessage}</p>
+                    </div>
+                )}
                 <button type="submit">Submit</button>
             </form>
         </section>
     )
 }
 
+// above: the errorMessage is the equivalent as:
+// if(errorMessage) {
+    // <div>
+    // <p className="error-text">{errorMessage}</p>
+    // </div>
+// }
+
+// if errorMessage has a truthy value, the <div> block will render; if errorMessage doesn't have an error message, the following <div> block doesn't render; the && operator—known as the AND operator—is being used here as a short circuit; if the first value resolves to true, the second expression is evaluated
+// with the onChange attribute, the error message displays as soon as the first letter is typed inside the email field; the onBlur attribute will fire the event once the user has changed focus from the input field, thus allowing the user to finish their entry before validating their input
+
 export default ContactForm;
+
+// in React we can create a single-page application that leverages the JavaScript environment in which we created the markup; a single-page application, or SPA, is a web application or website that interacts with the web browser by dynamically rewriting the current webpage, in place of the default method of the browser loading entirely new pages; this approach allows for a more fluid UI because the page doesn't have to be reloaded each time; React allows for conditional rendering and can replace a portion of the webpage based on the user's selection
