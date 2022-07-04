@@ -1,10 +1,11 @@
 // App.js is the root component, or the wrapper component, that houses all of the other components
 // to effect any change on the application, we need to either modify this file or add components inside of it
 // React components follow the PascalCase naming convention; this will help you quickly identify whether a function is a component of just a regular function
-import React,  { useState } from 'react';
+import React, { useState } from 'react';
 import Nav from './components/Nav';
 import About from './components/About';
 import Gallery from './components/Gallery';
+import ContactForm from './components/Contact';
 
 
 // inside the function, HTML is all that is returned; but in reality, it's not HTML but rather a language called JSX that essentially represents HTML in JavaScript
@@ -40,9 +41,10 @@ function App() {
       ></Nav>
       <main>
         <div>
+          <ContactForm></ContactForm>
           <Gallery currentCategory={currentCategory}></Gallery>
-        <About></About>
-        </div>        
+          <About></About>
+        </div>
       </main>
     </div>
   );
