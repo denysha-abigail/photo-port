@@ -116,8 +116,9 @@ const PhotoList = ({ category }) => {
   const toggleModal = (image, i) => {
     // we updated the current photo state using the setCurrentPhoto function with the data retrieved through the click event
     // we used the spread operator here to add the index: i key value pair to the current photo state
-    setCurrentPhoto({...image, index: i});
-    setIsModalOpen(true);
+    setCurrentPhoto({ ...image, index: i });
+    // when the toggleModal function is executed, the value of isModalOpen is toggled from true to false
+    setIsModalOpen(!isModalOpen);
   }
 
   // map over the images in PhotoList without having to import each one at the top
@@ -127,7 +128,9 @@ const PhotoList = ({ category }) => {
   // default property = where the image has been saved; to render the image, the default property myst be invoked
   return (
     <div>
-      {isModalOpen && <Modal currentPhoto={currentPhoto} />}
+      {isModalOpen && (
+        <Modal currentPhoto={currentPhoto} onClose={toggleModal} />
+      )}
       <div className="flex-row">
         {currentPhotos.map((image, i) => (
           <img
@@ -146,6 +149,6 @@ const PhotoList = ({ category }) => {
 // above: in React, we'll use the onClick attribute and assign a click handler function to capture the individual photo data
 // we added the event listener attribute to each <img> element in each category and assigned the toggleModal function to handle the click event; we passed in the current image and i as arguments; the image object represents the element in the photos array, and the i will render the image
 
-// modified <Modal currentPhoto={currentPhoto} /> to {isModalOpen && <Modal currentPhoto={currentPhoto} />} in order to render the modal if the isModalOpen value is true
+
 
 export default PhotoList;
