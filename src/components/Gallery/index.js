@@ -11,11 +11,12 @@ function Gallery({ currentCategory }) {
     // use capitalizeFirstLetter() helper function to capitalize the name value when it's rendered; reminder: it must be imported before we can use it
     // to get the category variable from PhotoList to work, we must pass down the currentCategory.name as a prop into the Photolist component from Gallery
     const { name, description } = currentCategory;
+    
     return (
         <section>
             <h1 data-testid="h1tag">{capitalizeFirstLetter(name)}</h1>
             <p>{description}</p>
-            <PhotoList />
+            <PhotoList category={currentCategory.name} />
         </section>
     );
 }
